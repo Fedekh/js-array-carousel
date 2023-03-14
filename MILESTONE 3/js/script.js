@@ -65,17 +65,47 @@ for (let i = 0; i < arrayItems.length ; i++) {
     // ora aggiungo in maniera dinamica all'interno di questa variabile contenitore precedenemnte dichiarata come aggancio a un elemento html, ogni
     // elemento array
     itemCont.innerHTML += sliderItem; 
-    console.log (itemCont)     
-
+    console.log (itemCont)    
 }
+
 
 //Creo un ulteriore variabile che lego all'elemento o elementi html, in questo caso i div che conterranno le img, specificando
 // con l'etichetta 0 in questo caso, che il primo elemento, oltre la classe di defaul .item gli si debba aggiungere anche
 //la classe .active che nello specifico la faccia apparire anziche restare hidden come le altre
+
+// IMPOSTO PRIMO SLIDE VISIBILE
+
 let rowItem = document.getElementsByClassName("item");
-console.log(rowItem, typeof rowItem);
+let index = 0;
 
-rowItem[0].classList.add("active");
+rowItem[index].classList.add("active");
 
+
+// MILESTONE 3
+
+// creazione variabili legate ai 2 button
+
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+
+console.log(prev, next);
+
+// Alla pressione del tasto next........
+
+next.addEventListener ("click", function(){
+
+    // tolgo lo stato di visibile all'img attuale
+    rowItem[index].classList.remove("active");
+
+    // incremento l'indice
+    index++;
+
+    // aggiungo lo stato di visibile all img successiva
+    rowItem[index].classList.add("active");
+
+    if (index === arrayItems.length-1){
+        next.classList.add("hidden");
+    }
+})
 
 
