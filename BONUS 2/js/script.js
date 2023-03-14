@@ -73,7 +73,7 @@ for (let i = 0; i < arrayItems.length ; i++) {
 // con l'etichetta 0 in questo caso, che il primo elemento, oltre la classe di defaul .item gli si debba aggiungere anche
 //la classe .active che nello specifico la faccia apparire anziche restare hidden come le altre
 
-// IMPOSTO PRIMO SLIDE VISIBILE
+// IMPOSTO PRIMO SLIDE OPACITA' 1
 
 let rowItem = document.getElementsByClassName("item");
 let index = 0;
@@ -91,6 +91,7 @@ const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 console.log(prev, next);
 
+// creo variabile in cui nell'html conterrà l'immagine attuale grande
 let actualImage = document.querySelector(".actual-image");
 console.log(actualImage, typeof actualImage);
 
@@ -100,55 +101,49 @@ console.log(actualImage, typeof actualImage);
 
 // Alla pressione del tasto next........
 
-next.addEventListener ("click", function(){
-
-    // fa si che la freccia per andare indietro, scompaia se sia nell img N 1 (NON SERVE PIU NEL BONUS 1)
-    if (index >= 0) {
-        prev.classList.remove("hidden");
-    }
+next.addEventListener ("click", function(){    
     
-
-    // tolgo lo stato di visibile all'img attuale
+    // tolgo lo stato di opacita 1 all'img attuale sulla dx
     rowItem[index].classList.remove("active");
-
+    
     // incremento l'indice
     index++;
-
-    // aggiungo lo stato di visibile all img successiva
-    rowItem[index].classList.add("active");
-
-    // ORA SE RAGGIUNGO LA FINE, L'ATTUALE IMG TOLGO ACTIVE, AZZERO IL CONTATORE I, SUCCESSIVA IMG AGGIUNGO ACTIVE
-    if (index === arrayItems.length-1){
-        rowItem[index].classList.remove("active");
+    
+    // Controllo per cominciare da capo
+    if (index === arrayItems.length){
+        // rowItem[index].classList.remove("active");
         index = 0;
-        rowItem[index].classList.add("active");
+        // rowItem[index].classList.add("active");        
     }
+    
+    // ingrandisco a sx l'immagine selezionata
+    actualImage.innerHTML = rowItem[index].innerHTML;
+
+    // aggiungo lo stato di opacità 1 all img successiva sulla dx
+    rowItem[index].classList.add("active");
+    
 })
 
 
 
 // Alla pressione del tasto prev........
-prev.addEventListener ("click", function(){
+prev.addEventListener ("click", function(){    
     
-    // ORA anche se sono all'inizio e voglio andare in reverse, non ho problemi a farlo
-    if (index === 0){
-       rowItem[index].classList.remove("active");
-       index = arrayItems.length-1;
-       rowItem[index].classList.add("active");
-   }
-    // fa si che la freccia per andare avanti, scompaia se sia nell ultima img  (NON SERVE PIU NEL BONUS 1)   
-    if (index <= arrayItems.length-1) {
-        next.classList.remove("hidden");
-    }
-    
-    // tolgo lo stato di visibile all'img attuale
+    // tolgo lo stato di non opacità all'img attuale
     rowItem[index].classList.remove("active");
-
+    
     // decremento l'indice
     index--;
 
-    // aggiungo lo stato di visibile all img successiva, o quella retro per meglio dire
+    // eseguo un HTMLFormControlsCollection, se l'indice diventa negativo, lo resetto alla max lunghezza
+    if (index < 0){
+       index = arrayItems.length-1;       
+    }
+    
+    // aggiungo lo stato di opacità all img successiva, o quella retro per meglio dire
     rowItem[index].classList.add("active");
+    
+    actualImage.innerHTML = rowItem[index].innerHTML;
 
 
 })
