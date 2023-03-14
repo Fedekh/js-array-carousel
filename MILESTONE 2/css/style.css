@@ -35,12 +35,13 @@ body {
     object-fit: cover;
   }
 
-  .item {
+  
+  .item:not(:first-child) {
     display: none;
     height: 100%;
-
+    
   }
-
+  
   .slider-items .active {
     display: block;
   }

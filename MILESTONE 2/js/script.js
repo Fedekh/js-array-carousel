@@ -49,13 +49,23 @@
 // Da consegna ho un array con all'iterno 5 elementi
 const arrayItems = ["img/01.jpg", "img/02.jpg", "img/03.jpg", "img/04.jpg", "img/05.jpg"];
 
-// tramite ciclo for, stampero in console log tutti questi elementi
+const itemCont = document.querySelector (".slider-items");
+// console.log(itemCont);
+
+// tramite ciclo for, stampero in console log tutti questi elementi, che scorrerà ogni l'etichetta di arrayItems e da 0 a 4, cosi da creare image
+// formato dai 5 elementi (da 0 a 4) dell'array di partenza arrayItems
 
 for (let i = 0; i < arrayItems.length ; i++) {
     // creo una variabile d'appoggio "items"
-    const items = arrayItems[i];
+    const image = arrayItems[i];
     // creo quindi ogni singolo elemento [] che comporrà l'array sfruttando un contatore
-    const sliderItem = `<div class="item active"><img src="${items}" alt=""></div>`;
-    console.log(items);
-        
+    const sliderItem = `<div class="item"><img src="${image}" alt=""></div>`;
+    // console.log(sliderItem); 
+
+    // ora aggiungo in maniera dinamica all'interno di questa variabile contenitore precedenemnte dichiarata come aggancio a un elemento html, ogni
+    // elemento array
+    itemCont.innerHTML += sliderItem;  
+    console.log (itemCont)     
 }
+
+
