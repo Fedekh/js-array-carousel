@@ -64,8 +64,15 @@ for (let i = 0; i < arrayItems.length ; i++) {
 
     // ora aggiungo in maniera dinamica all'interno di questa variabile contenitore precedenemnte dichiarata come aggancio a un elemento html, ogni
     // elemento array
-    itemCont.innerHTML += sliderItem;  
+    itemCont.innerHTML += sliderItem; 
     console.log (itemCont)     
+
 }
+
+let rowItem = document.getElementsByClassName("item");
+console.log(rowItem, typeof rowItem);
+
+rowItem[0].classList.add("active");
+
 
 

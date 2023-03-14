@@ -36,13 +36,13 @@ body {
   }
 
   
-  .item:not(:first-child) {
+  .item{
     display: none;
     height: 100%;
     
   }
   
-  .slider-items .active {
+  .active {
     display: block;
   }
 
