@@ -13,7 +13,7 @@
 // Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1, ma costruito dinamicamente attraverso JavaScript.
 
 // **MILESTONE 3**
-// Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.
+// 
 
 //**BONUS 1:**
 
