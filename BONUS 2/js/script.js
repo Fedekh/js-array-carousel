@@ -83,11 +83,16 @@ rowItem[index].classList.add("active");
 
 // MILESTONE 3
 
+// BONUS 2 
+
 // creazione variabili legate ai 2 button
 
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 console.log(prev, next);
+
+let actualImage = document.querySelector(".actual-image");
+console.log(actualImage, typeof actualImage);
 
 // di default il tasto prev deve essere nascosto, ORA NEL BONUS 1 NO NON DEVE ESSERE NASCOSTO DI DEFAULT ALLA PRIMA IMG
 // prev.classList.add("hidden");
@@ -98,9 +103,9 @@ console.log(prev, next);
 next.addEventListener ("click", function(){
 
     // fa si che la freccia per andare indietro, scompaia se sia nell img N 1 (NON SERVE PIU NEL BONUS 1)
-    // if (index >= 0) {
-    //     prev.classList.remove("hidden");
-    // }
+    if (index >= 0) {
+        prev.classList.remove("hidden");
+    }
     
 
     // tolgo lo stato di visibile all'img attuale
@@ -124,11 +129,17 @@ next.addEventListener ("click", function(){
 
 // Alla pressione del tasto prev........
 prev.addEventListener ("click", function(){
-
+    
+    // ORA anche se sono all'inizio e voglio andare in reverse, non ho problemi a farlo
+    if (index === 0){
+       rowItem[index].classList.remove("active");
+       index = arrayItems.length-1;
+       rowItem[index].classList.add("active");
+   }
     // fa si che la freccia per andare avanti, scompaia se sia nell ultima img  (NON SERVE PIU NEL BONUS 1)   
-    // if (index <= arrayItems.length-1) {
-    //     next.classList.remove("hidden");
-    // }
+    if (index <= arrayItems.length-1) {
+        next.classList.remove("hidden");
+    }
     
     // tolgo lo stato di visibile all'img attuale
     rowItem[index].classList.remove("active");
@@ -139,12 +150,6 @@ prev.addEventListener ("click", function(){
     // aggiungo lo stato di visibile all img successiva, o quella retro per meglio dire
     rowItem[index].classList.add("active");
 
-     // ORA anche se sono all'inizio e voglio andare in reverse, non ho problemi a farlo
-     if (index === 0){
-        rowItem[index].classList.remove("active");
-        index = arrayItems.length-1;
-        rowItem[index].classList.add("active");
-    }
 
 })
 
