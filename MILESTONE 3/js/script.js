@@ -13,7 +13,7 @@
 // Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1, ma costruito dinamicamente attraverso JavaScript.
 
 // **MILESTONE 3**
-// 
+// Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.
 
 //**BONUS 1:**
 
@@ -97,17 +97,19 @@ prev.classList.add("hidden");
 
 next.addEventListener ("click", function(){
 
+    // tolgo lo stato di visibile all'img attuale
+    rowItem[index].classList.remove("active");
+
+
+    // incremento l'indice
+    index++;
+
+
     // fa si che la freccia per andare indietro, scompaia se sia nell img N 1
     if (index >= 0) {
         prev.classList.remove("hidden");
     }
     
-
-    // tolgo lo stato di visibile all'img attuale
-    rowItem[index].classList.remove("active");
-
-    // incremento l'indice
-    index++;
 
     // aggiungo lo stato di visibile all img successiva
     rowItem[index].classList.add("active");
@@ -116,6 +118,7 @@ next.addEventListener ("click", function(){
     if (index === arrayItems.length-1){
         next.classList.add("hidden");
     }
+    
 })
 
 

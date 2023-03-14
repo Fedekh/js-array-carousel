@@ -13,7 +13,7 @@
 // Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1, ma costruito dinamicamente attraverso JavaScript.
 
 // **MILESTONE 3**
-// 
+// Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.
 
 //**BONUS 1:**
 
@@ -97,27 +97,22 @@ console.log(prev, next);
 
 next.addEventListener ("click", function(){
 
-    // fa si che la freccia per andare indietro, scompaia se sia nell img N 1 (NON SERVE PIU NEL BONUS 1)
-    // if (index >= 0) {
-    //     prev.classList.remove("hidden");
-    // }
-    
-
     // tolgo lo stato di visibile all'img attuale
     rowItem[index].classList.remove("active");
 
     // incremento l'indice
     index++;
 
+    // ORA SE RAGGIUNGO LA FINE, L'ATTUALE IMG TOLGO ACTIVE, AZZERO IL CONTATORE I, SUCCESSIVA IMG AGGIUNGO ACTIVE
+    if (index === arrayItems.length){
+        // rowItem[index].classList.remove("active");
+        index = 0;
+        // rowItem[index].classList.add("active");
+    }
+    
     // aggiungo lo stato di visibile all img successiva
     rowItem[index].classList.add("active");
 
-    // ORA SE RAGGIUNGO LA FINE, L'ATTUALE IMG TOLGO ACTIVE, AZZERO IL CONTATORE I, SUCCESSIVA IMG AGGIUNGO ACTIVE
-    if (index === arrayItems.length-1){
-        rowItem[index].classList.remove("active");
-        index = 0;
-        rowItem[index].classList.add("active");
-    }
 })
 
 
@@ -125,23 +120,18 @@ next.addEventListener ("click", function(){
 // Alla pressione del tasto prev........
 prev.addEventListener ("click", function(){
 
-    // ORA anche se sono all'inizio e voglio andare in reverse, non ho problemi a farlo
-    if (index === 0){
-       rowItem[index].classList.remove("active");
-       index = arrayItems.length-1;
-       rowItem[index].classList.add("active");
-       
-   }
-    // fa si che la freccia per andare avanti, scompaia se sia nell ultima img  (NON SERVE PIU NEL BONUS 1)   
-    // if (index <= arrayItems.length-1) {
-    //     next.classList.remove("hidden");
-    // }
-    
     // tolgo lo stato di visibile all'img attuale
     rowItem[index].classList.remove("active");
-
+ 
     // decremento l'indice
     index--;
+
+    // A furia di decrementare, se dovessi avere un indice negativo, lo resetto per bene che mi fa capire che devo
+    // partire dalla quinta foto
+    
+    if (index < 0){
+       index = arrayItems.length-1;       
+    }    
 
     // aggiungo lo stato di visibile all img successiva, o quella retro per meglio dire
     rowItem[index].classList.add("active");
