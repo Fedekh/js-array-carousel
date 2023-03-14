@@ -87,12 +87,21 @@ rowItem[index].classList.add("active");
 
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
-
 console.log(prev, next);
+
+// di default il tasto prev deve essere nascosto
+prev.classList.add("hidden");
+
 
 // Alla pressione del tasto next........
 
 next.addEventListener ("click", function(){
+
+    // fa si che la freccia per andare indietro, scompaia se sia nell img N 1
+    if (index >= 0) {
+        prev.classList.remove("hidden");
+    }
+    
 
     // tolgo lo stato di visibile all'img attuale
     rowItem[index].classList.remove("active");
@@ -103,9 +112,37 @@ next.addEventListener ("click", function(){
     // aggiungo lo stato di visibile all img successiva
     rowItem[index].classList.add("active");
 
+    // se raggiungo l'ultima img, tolgo la possibilita di andare avanti
     if (index === arrayItems.length-1){
         next.classList.add("hidden");
     }
 })
+
+
+
+// Alla pressione del tasto prev........
+prev.addEventListener ("click", function(){
+
+    // fa si che la freccia per andare avanti, scompaia se sia nell ultima img     
+    if (index <= arrayItems.length-1) {
+        next.classList.remove("hidden");
+    }
+    
+    // tolgo lo stato di visibile all'img attuale
+    rowItem[index].classList.remove("active");
+
+    // decremento l'indice
+    index--;
+
+    // aggiungo lo stato di visibile all img successiva, o quella retro per meglio dire
+    rowItem[index].classList.add("active");
+
+     // se raggiungo l'ultima img, ovvero la prima, tolgo la possibilita di andare ancora indietro
+     if (index === 0){
+        prev.classList.add("hidden");
+    }
+
+})
+
 
 
