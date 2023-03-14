@@ -125,13 +125,6 @@ next.addEventListener ("click", function(){
 // Alla pressione del tasto prev........
 prev.addEventListener ("click", function(){
 
-    // ORA anche se sono all'inizio e voglio andare in reverse, non ho problemi a farlo
-    if (index === 0){
-       rowItem[index].classList.remove("active");
-       index = arrayItems.length-1;
-       rowItem[index].classList.add("active");
-       
-   }
     // fa si che la freccia per andare avanti, scompaia se sia nell ultima img  (NON SERVE PIU NEL BONUS 1)   
     // if (index <= arrayItems.length-1) {
     //     next.classList.remove("hidden");
@@ -146,6 +139,12 @@ prev.addEventListener ("click", function(){
     // aggiungo lo stato di visibile all img successiva, o quella retro per meglio dire
     rowItem[index].classList.add("active");
 
+     // ORA anche se sono all'inizio e voglio andare in reverse, non ho problemi a farlo
+     if (index === 0){
+        rowItem[index].classList.remove("active");
+        index = arrayItems.length-1;
+        rowItem[index].classList.add("active");
+    }
 
 })
 
